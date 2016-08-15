@@ -4,14 +4,15 @@ import Planck
 import PhasePlot
 
 #planck fucntion handler
+#this currently only uses integer values due to the limitaions of range()
 def planckCall():
     print()
-    print("Enter wavelength range (in meters) and temperature (in Kelvin) or 'quit' to end.")
-    initialWave = input("Initial wavelength: ")
+    print("Enter wavelength range (in nanometers) and temperature (in Kelvin) or 'quit' to end.")
+    initialWave = input("Shortest wavelength: ")
     if (initialWave.lower() == "quit"):
         print()
         return
-    finalWave = input("Final wavelength: ")
+    finalWave = input("Longest wavelength: ")
     if (finalWave.lower() == "quit"):
         print()
         return
@@ -21,7 +22,8 @@ def planckCall():
         return
 
     try:
-        Planck.Blackbody(range(int(initialWave),int(finalWave)+1),int(temp))
+        #int(float()) conversion used if user enters a float, range() requires int
+        Planck.Blackbody(range(int(float(initialWave)),int(float(finalWave)+1)),int(float(temp)))
         return
     except:
         print("Invalid values")
@@ -30,6 +32,7 @@ def planckCall():
 
 #phase plot call handler
 def phaseCall():
+    print()
     filename = input("Enter the filename to be plotted: ")
     try:
         PhasePlot.phasePlot(filename)
