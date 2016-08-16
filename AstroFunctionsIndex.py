@@ -26,6 +26,7 @@ def planckCall():
         Planck.Blackbody(range(int(float(initialWave)),int(float(finalWave)+1)),int(float(temp)))
         return
     except:
+        print()
         print("Invalid values")
         return
 
@@ -33,11 +34,28 @@ def planckCall():
 #phase plot call handler
 def phaseCall():
     print()
-    filename = input("Enter the filename to be plotted: ")
-    try:
-        PhasePlot.phasePlot(filename)
-        return
-    except:
-        print("Invalid file")
-        return
+    while (1):
+        choice = input("Plot with errors? Yes or no: ")
+        if (choice.lower() == "yes"):
+            filename = input("Enter the filename to be plotted: ")
+            title = input("Enter the plot title: ")
+            try:
+                PhasePlot.phasePlotError(filename, title)
+                return
+            except:
+                print()
+                print("Invalid file")
+                return
+        elif (choice.lower() == "no"):
+            filename = input("Enter the filename to be plotted: ")
+            title = input("Enter the plot title: ")
+            try:
+                PhasePlot.phasePlot(filename, title)
+                return
+            except:
+                print()
+                print("Invalid file")
+                return
+        else:
+            continue
 

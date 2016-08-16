@@ -7,7 +7,7 @@ def planck(wave, temp):
     
     #initial condition, wavelength must be positive
     if wave <= 0:
-        return 0
+        return 
 
     #constants
     h = 6.62607041*(10**-34) #Joules per second

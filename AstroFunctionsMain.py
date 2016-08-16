@@ -24,7 +24,6 @@ def functionCaller(userInput):
 if __name__ == "__main__":
     #make the main loop for the program
     while (1):
-        
         mainMenu()
         userInput = input("")
         if (userInput.lower() == "quit"):
@@ -34,5 +33,5 @@ if __name__ == "__main__":
                 functionCaller(userInput)
                 print()
             except:
-                #some message about choosing a proper value, or nothing and just looping again
+                #some message about choosing a proper value, or nothing and just loop again
                 print()
