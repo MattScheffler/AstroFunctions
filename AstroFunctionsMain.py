@@ -7,6 +7,7 @@ def mainMenu():
     print("Enter the number of the function you want to use:")
     print("1. Blackbody distribution plot.")
     print("2. Phase plot.")
+    print("3. Kepler's third law.")
     print("Enter 'quit' to end.")
 
 #make a switch case function that calls whatever the user wants from the index
@@ -14,6 +15,7 @@ def functionCaller(userInput):
     functions = {
         "1": index.planckCall,
         "2": index.phaseCall,
+        "3": index.keplerCall,
         }
     if (userInput in functions.keys()):
         return functions[userInput]()

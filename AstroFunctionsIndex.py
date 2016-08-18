@@ -2,6 +2,7 @@
 
 import Planck
 import PhasePlot
+import Kepler
 
 #planck fucntion handler
 #this currently only uses integer values due to the limitaions of range()
@@ -59,3 +60,57 @@ def phaseCall():
         else:
             continue
 
+#kepler call handler
+def keplerCall():
+    print()
+    while (1):
+        print("Enter the number of what you want to solve for, enter 'quit' to end:")
+        print("1. Total mass.")
+        print("2. Orbital period.")
+        print("3. Semi-major axis.")
+        choice = input()
+        if (choice.lower() == "quit"):
+            return
+        elif (choice == "1"):
+            print()
+            print("Enter period in days and semi-major axis in AU.")
+            period = input("Period: ")
+            a = input("Semi-major axis: ")
+            try:
+                print()
+                print("Total mass:", Kepler.keplerMass(float(period), float(a)), "solar masses")
+                print()
+            except:
+                print()
+                print("Invalid values")
+                print()
+        elif (choice == "2"):
+            print()
+            print("Enter mass in solar masses and semi-major axis in AU.")
+            mass = input("Enter mass: ")
+            a = input("Enter semi-major axis: ")
+            try:
+                print()
+                print("Orbital period:", Kepler.keplerPeriod(float(mass), float(a)), "days")
+                print()
+            except:
+                print()
+                print("Invalid values")
+                print()
+        elif (choice == "3"):
+            print()
+            print("Enter mass in solar masses and period in days.")
+            mass = input("Enter mass: ")
+            period = input("Enter period: ")
+            try:
+                print()
+                print("Semi-major axis:", Kepler.keplerAxis(float(mass), float(period)), "AU")
+                print()
+            except:
+                print()
+                print("Invalid values")
+                print()
+        else:
+            print()
+            continue
+        
