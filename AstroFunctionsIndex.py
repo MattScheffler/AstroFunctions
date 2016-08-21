@@ -3,6 +3,7 @@
 import Planck
 import PhasePlot
 import Kepler
+import Flux
 
 #planck fucntion handler
 #this currently only uses integer values due to the limitaions of range()
@@ -114,3 +115,42 @@ def keplerCall():
             print()
             continue
         
+#Flux call handler
+def fluxCall():
+    print()
+    while(1):
+        print("Enter the number of the option you want to solve for, enter 'quit' to end:")
+        print("1. Flux")
+        print("2. Luminosity")
+        choice = input()
+        if (choice.lower() == "quit"):
+            return
+        elif (choice.strip() == "1"):
+            print("Star's luminosity: ", end="")
+            L = input()
+            print("Distance from star (or star's radius): ", end="")
+            d = input()
+            try:
+                print()
+                print("Flux:",Flux.flux(float(L), float(d)))
+                print()
+            except:
+                print()
+                print("Invalid values")
+                print()
+        elif (choice.strip() == "2"):
+            print("Distance from star (or star's radius): ", end="")
+            d = input()
+            print("Flux at that distance: ", end="")
+            flux = input()
+            try:
+                print()
+                print("Luminosity:", Flux.luminosity(float(flux), float(d)))
+                print()
+            except:
+                print()
+                print("Invalid values")
+                print()
+        else:
+            print()
+            continue
