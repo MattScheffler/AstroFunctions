@@ -4,6 +4,7 @@ import Planck
 import PhasePlot
 import Kepler
 import Flux
+import StellarStructure
 
 #planck fucntion handler
 #this currently only uses integer values due to the limitaions of range()
@@ -114,7 +115,7 @@ def keplerCall():
         else:
             print()
             continue
-        
+
 #Flux call handler
 def fluxCall():
     print()
@@ -154,3 +155,35 @@ def fluxCall():
         else:
             print()
             continue
+
+#density plot call handler
+def densityCall():
+    print()
+    print("This will plot the density of a star from the intial radius to the star's total radius.")
+    print("Current density distribution:", StellarStructure.densityFormula)
+    r_initial = input("Radius range start: ")
+    R = input("Total radius: ")
+    mass = input("Mass of star: ")
+    try:
+        StellarStructure.densityPlot(range(int(float(r_initial)), int(float(R))+1),float(R),float(mass))
+        return
+    except:
+        print()
+        print("Invalid values")
+        return
+
+#mass plot call handler
+def massCall():
+    print()
+    print("This will plot the mass of a star from the intial radius to the star's total radius.")
+    print("Current density distribution:", StellarStructure.densityFormula)
+    r_initial = input("Radius range start: ")
+    R = input("Total radius: ")
+    mass = input("Mass of star: ")
+    try:
+        StellarStructure.massPlot(range(int(float(r_initial)), int(float(R))+1),float(R),float(mass))
+        return
+    except:
+        print()
+        print("Invalid values")
+        return

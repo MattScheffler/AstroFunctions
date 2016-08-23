@@ -9,6 +9,8 @@ def mainMenu():
     print("2. Phase plot.")
     print("3. Kepler's third law.")
     print("4. Flux and luminosity.")
+    print("5. Stellar density vs. radius plot.")
+    print("6. Stellar mass vs. radius plot.")
     print("Enter 'quit' to end.")
 
 #make a switch case function that calls whatever the user wants from the index
@@ -18,6 +20,8 @@ def functionCaller(userInput):
         "2": index.phaseCall,
         "3": index.keplerCall,
         "4": index.fluxCall,
+        "5": index.densityCall,
+        "6": index.massCall,
         }
     if (userInput in functions.keys()):
         return functions[userInput]()
@@ -29,7 +33,7 @@ if __name__ == "__main__":
     #make the main loop for the program
     while (1):
         mainMenu()
-        userInput = input("")
+        userInput = input()
         if (userInput.lower() == "quit"):
             break
         else:
