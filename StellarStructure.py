@@ -1,4 +1,4 @@
-#Plots the density and mass of a star as a function of radius for a given density distribution.
+#Plots the density, mass, and pressure of a star as a function of radius for a given density distribution.
 from math import pow, pi
 import matplotlib.pyplot as plt
 
@@ -23,9 +23,20 @@ def mass(r, R, M):
 
     return mass
 
-#plotting functions, input the range of radii that you want to plot, and the star's radius/mass
+#pressure for a radius value r, total mass M and total radius R
+def pressure(r, R, M):
+    #central density
+    rho_c = (15*M)/(8*pi*pow(R,3))
+    #gravitational constant in SI units
+    G = 6.67*pow(10,-11)
+
+    pressure = 4*pi*G*pow(rho_c,2)*(((2*pow(r,4))/(15*pow(R,2)))-(pow(r,2)/6)-(pow(r,6)/(30*pow(R,4)))+(pow(R,2)/15))
+
+    return pressure
+    
+#plotting functions, input the range of radii that you want to plot, and the star's radius/mass/pressure
 def densityPlot(radii, R, M):
-    if (M < 0):
+    if (M <= 0) or (R <= 0):
         return
     densities = []
     for radius in radii:
@@ -44,7 +55,7 @@ def densityPlot(radii, R, M):
     return
 
 def massPlot(radii, R, M):
-    if (M < 0):
+    if (M <= 0) or (R <= 0):
         return
     masses = []
     for radius in radii:
@@ -58,6 +69,25 @@ def massPlot(radii, R, M):
     plt.title("Mass vs. Radius")
     plt.xlabel("Radius")
     plt.ylabel("Mass")
+    plt.show()
+
+    return
+
+def pressurePlot(radii, R, M):
+    if (M <= 0) or (R <= 0):
+        return
+    pressures = []
+    for radius in radii:
+        if (radius < 0):
+            continue
+        else:
+            pressures.append(pressure(radius,R,M))
+
+    plt.plot(radii, pressures)
+    plt.axis([0,R,0,max(pressures)])
+    plt.title("Pressure vs. Radius")
+    plt.xlabel("Radius")
+    plt.ylabel("Pressure")
     plt.show()
 
     return

@@ -187,3 +187,20 @@ def massCall():
         print()
         print("Invalid values")
         return
+
+#pressure plot call handler
+def pressureCall():
+    print()
+    print("This will plot the pressure of a star from the intial radius to the star's total radius.")
+    print("Current density distribution:", StellarStructure.densityFormula)
+    r_initial = input("Radius range start: ")
+    R = input("Total radius: ")
+    mass = input("Mass of star: ")
+    try:
+        StellarStructure.pressurePlot(range(int(float(r_initial)),int(float(R))+1),float(R),float(mass))
+        return
+    except:
+        print()
+        print("Invalid values")
+        return
+    
